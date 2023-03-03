@@ -55,7 +55,9 @@ void computeHash(const string& hashProgName)
 
 	
 	
-	/** TODO: Now, lets read a message from the parent **/
+	/** TODO: Now, lets read a message from the parent 
+		passed Crimon's check
+	**/
 	if(read(parentToChildPipe[READ_END], fileNameRecv, MAX_FILE_NAME_LENGTH) < 0)
     {
         perror("read");
@@ -69,15 +71,17 @@ void computeHash(const string& hashProgName)
     /* TODO: Open the pipe to the program (specified in cmdLine) 
 	* using popen() and save the ouput into hashValue. See popen.cpp
     * for examples using popen.*/
-	FILE * hashOutput = popen(cmdLine.c_str(), "r");
+	FILE * hashValue = popen(cmdLine.c_str(), "r");
 
-    if(!hashOutput)
+	// Need to make sure the  
+
+    if(!hashValue)
     {
-        perror("read");
+        perror("popen");
 		exit(-1);
     }
 
-	if(fread(hashValue, sizeof(char), sizeof(char) * MAX_FILE_NAME_LENGTH, hashOutput) < 0)
+	if(fread(hashValue, sizeof(char), sizeof(char) * MAX_FILE_NAME_LENGTH, hashValue) < 0)
 	{
 		perror("fread");
 		exit(-1);

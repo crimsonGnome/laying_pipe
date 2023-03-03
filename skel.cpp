@@ -56,6 +56,7 @@ void computeHash(const string& hashProgName)
 	
 	
 	/** TODO: Now, lets read a message from the parent **/
+
 	
 	/* Glue together a command line <PROGRAM NAME>. 
  	 * For example, sha512sum fileName.
